@@ -1,20 +1,49 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Página de inicio de sesión</title>
-	<link rel="stylesheet">
-</head>
-<body>
-	<div class="contenedor">
-		<h1>Bienvenido/a</h1>
-		<form action="login.php" method="post">
-			<label for="usuario">Usuario:</label>
-			<input type="text" id="usuario" name="usuario" required>
-			<label for="contrasena">Contraseña:</label>
-			<input type="password" id="contrasena" name="contrasena" required>
-			<input type="submit" value="Iniciar sesión">
-		</form>
-	</div>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>**** SECRET ****</title>
+  </head>
+  <body>
+    <h1>*** SOLDADO HAS SIDO ESCOGIDO ****</h1>
+    <h2> INGRESA LAS CREDENCIALES ENVIADAS <H2>
+    <H3>
+      <form method="post" action="process_login.php">
+      <label for="username">Usuario:</label>
+      <input type="text" name="username" id="username" required>
+      <br><br>
+      <label for="password">Contraseña:</label>
+      <input type="password" name="password" id="password" required>
+      <br><br>
+      <input type="submit" value="Iniciar sesión">
+    </form>
+    <H3>
+      <div id="countdown"></div>
+
+      <script>
+        // Verificar si se han enviado los datos del formulario
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+
+          // Reemplazar "usuario" y "contraseña" con los valores que hayas establecido
+          $username = "user";
+          $password = "123456";
+
+          // Verificar si el nombre de usuario y la contraseña son correctos
+          if ($_POST['username'] == $username && $_POST['password'] == $password) {
+            // Iniciar sesión y redirigir al usuario a la página principal
+            session_start();
+            $_SESSION['username'] = $username;
+            header("Location: misiones.php");
+            exit();
+          } else {
+            // Mostrar un mensaje de error si el nombre de usuario o la contraseña son incorrectos
+            echo "Nombre de usuario o contraseña incorrectos.";
+          }
+
+        } else {
+          // Mostrar un mensaje de error si los datos del formulario no se han enviado
+          echo "Debe ingresar un nombre de usuario y contraseña.";
+        }
+      	</script>
+
+  </body>
 </html>
