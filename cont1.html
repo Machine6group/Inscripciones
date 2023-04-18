@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Content1</title>
+</head>
+<body>
+	<h1>Content</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac sem enim. Sed vestibulum, nunc eget tempor lacinia, quam nisl aliquam nulla, vel ultricies libero nunc sed massa. Quisque sollicitudin, ipsum et tristique fermentum, orci mi tincidunt augue, a hendrerit nunc nibh a ante. Nulla sed libero odio. Nulla facilisi. Phasellus eget congue augue. Sed in enim dui. Fusce eu ullamcorper quam.</p>
+	<img src="https://picsum.photos/200">
+	<video width="320" height="240" controls>
+  		<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  		<source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+  		Your browser does not support the video tag.
+	</video>
+	<form action="enviar.php" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" required>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <br>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+        <br>
+        <input type="submit" name="submit" value="Enviar">
+    </form>
+</body>
+</html>
