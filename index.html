@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <script>
+      var loggedIn = false;
+
+      function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username == "usuario" && password == "contraseña") {
+          loggedIn = true;
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("terms").style.display = "block";
+        } else {
+          alert("Nombre de usuario o contraseña incorrectos.");
+        }
+      }
+
+      function acceptTerms() {
+        if (loggedIn) {
+          document.getElementById("terms").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          document.getElementById("timer").style.display = "block";
+          var timeLeft = 900; // tiempo restante en segundos (15 minutos)
+          var timer = setInterval(updateTimer, 1000); // actualizar el temporizador cada segundo
+
+          function updateTimer() {
+            timeLeft--; // restar un segundo al tiempo restante
+
+            if (timeLeft <= 0) {
+              clearInterval(timer);
+              alert("¡Tiempo agotado!");
+              window.location.reload();
+            } else {
+              var minutes = Math.floor(timeLeft / 60);
+              var seconds = timeLeft % 60;
+
+              document.getElementById("countdown").innerHTML = minutes + " minutos " + seconds + " segundos";
+            }
+          }
+        } else {
+          window.location.reload();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="loginForm">
+      <h2>Iniciar sesión</h2>
+      <form>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="button" value="Iniciar sesión" onclick="login()">
+      </form>
+    </div>
+
+    <div id="terms" style="display: none;">
+      <h2>Soldad</h2>
+      <p>Al hacer clic en "Aceptar", usted acepta los siguientes términos y condiciones:</p>
+      <ul>
+        <li>participar en la emocionante jornada a desarrollarse el dia 77/77/7777.</li>
+        <li>Avisar si no podra asistir.</li>
+        <li>El pago de $ 00.000.- para asegurar su visita</li>
+      </ul>
+      <input type="button" value="Aceptar" onclick="acceptTerms()">
+    </div>
+
+    <div id="content" style="display: none;">
+      <h2>Bienvenido</h2>
+      <p>Aquí está la información que estabas buscando.</p>
+
+      <h2>Formulario de contacto</h2>
+<form id="contactForm" onsubmit="return validateContactForm()">
+  <label for="name">Nombre completo:</label><br>
+  <input type="text" id="name" name="name" required><br>
+  <label for="nickname">Apodo:</label><br>
+  <input type="text" id="nickname" name="nickname" required><br>
+  <label for="phone">Teléfono:</label><br>
+  <input type="tel" id="phone" name="phone" required><br>
+  <label for="team">Equipo:</label><br>
+  <input type="text" id="team" name="team" required><br>
+  <button type="submit">Enviar</button>
+</form>
+
+<script>
+function validateContactForm() {
+  var name = document.getElementById("name").value;
+  var nickname = document.getElementById("nickname").value;
+  var phone = document.getElementById("phone").value;
+  var team = document.getElementById("team").value;
+
+  // Aquí puedes agregar cualquier validación adicional que desees
+
+  var data = "name=" + name + "&nickname=" + nickname + "&phone=" + phone + "&team=" + team;
+  // Aquí puedes enviar los datos del formulario a través de AJAX o un método de envío de formularios
+
+  alert("Gracias por enviar tus datos.");
+  return true;
+}
+</script>
+
+    </div>
+
+        <div id="timer" style="display: none;">
+      <p>Tiempo restante: <span id="countdown"></span></p>
+    </div>
+  </body>
+</html>
