@@ -28,7 +28,7 @@
       const user = users.find(u => u.username === username && u.password === password);
 
       if (user) {
-        window.location.href = '/xampp/htdocs/pagina/' + user.condiciones;
+        window.location.href = '/' + user.condiciones;
       } else {
         alert('Nombre de usuario o contraseña incorrectos.');
       }
